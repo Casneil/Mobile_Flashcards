@@ -4,10 +4,12 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 
 import ScreenOne from "./ScreenOne";
 import ScreenTwo from "./ScreenTwo";
+import AddDeck from "./AddDeck";
+import Deck from "./DeckList";
 
 const BottomTabNavigator = createBottomTabNavigator({
-  One: ScreenOne,
-  Two: ScreenTwo
+  One: AddDeck,
+  Two: Deck
 });
 
 export default BottomTabNavigator;
