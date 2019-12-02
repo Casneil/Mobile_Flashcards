@@ -2,8 +2,6 @@ import React from "react";
 import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 
-import ScreenOne from "./ScreenOne";
-import ScreenTwo from "./ScreenTwo";
 import AddDeck from "./AddDeck";
 import Deck from "./DeckList";
 
