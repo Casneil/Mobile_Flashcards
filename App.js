@@ -14,27 +14,28 @@ import DeckView from "./components/DeckView";
 
 export default function App() {
   // return <AppNavigator />;
-  return <MainNavigator />;
+  // return <MainNavigator />;
+  return <AppNavigator />;
 }
 
-const MainNavigator = createStackNavigator({
-  AppNavigator: {
-    screen: AppNavigator,
-    navigationOptions: ({ navigation }) => ({
-      title: `${navigation.state.params.name}'s Deck`
-    })
-  },
-  DeckView: {
-    screen: DeckView
-    // navigationOptions: {
-    //   title: "Deck View",
-    //   headerTintColor: white,
-    //   headerStyle: {
-    //     backgroundColor: purple
-    //   }
-    // }
-  }
-});
+// const MainNavigator = createStackNavigator({
+//   AppNavigator: {
+//     screen: AppNavigator,
+//     navigationOptions: ({ navigation }) => ({
+//       title: `${navigation.state.params.name}'s Deck`
+//     })
+//   },
+//   DeckView: {
+//     screen: DeckView
+//     // navigationOptions: {
+//     //   title: "Deck View",
+//     //   headerTintColor: white,
+//     //   headerStyle: {
+//     //     backgroundColor: purple
+//     //   }
+//     // }
+//   }
+// });
 
 // const styles = StyleSheet.create({
 //   container: {
