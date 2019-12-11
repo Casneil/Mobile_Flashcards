@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const DeckView = () => {
+const DeckView = props => {
   return (
     <View>
       <Text>Hello from Deck View</Text>

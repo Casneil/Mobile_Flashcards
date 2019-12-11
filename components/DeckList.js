@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import { getData } from "../utils/api";
 import ScreenName from "../components/ScreenName.js";
 
-const Deck = () => {
+const Deck = props => {
   const decks = getData();
   return (
     <View style={styles.container}>
@@ -14,6 +14,12 @@ const Deck = () => {
             <ScreenName name={"Screen Two"} />
             <Text>{title}</Text>
             <Text>{questions.length}</Text>
+            <Button
+              onPress={() =>
+                props.navigation.navigate("DeckView", { entryId: deck })
+              }
+              title="view deck"
+            ></Button>
           </View>
         );
       })}
