@@ -1,5 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text, TextInput, Button } from "react-native";
+import { saveDeckTitle } from "../utils/api";
+import { addDeck } from "../actions";
 
 // pull in the ScreenName component from ScreenName.js
 import ScreenName from "../components/ScreenName.js";
@@ -22,13 +24,11 @@ export default class ScreenOne extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScreenName
-          name={"Screen One" /* pass the name prop to ScreenName */}
-        />
+        <ScreenName name={"Add Deck" /* pass the name prop to ScreenName */} />
         <Text>What's the name of the new deck?</Text>
         <TextInput
           value={this.state.text}
-          onChangeText={text => this.setState(text)}
+          onChangeText={text => this.setState({ text: text })}
         ></TextInput>
         <Button title="submit" onPress={this.submitName}></Button>
       </View>

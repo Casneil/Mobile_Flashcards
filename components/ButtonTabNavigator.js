@@ -6,8 +6,8 @@ import AddDeck from "./AddDeck";
 import Deck from "./DeckList";
 
 const BottomTabNavigator = createBottomTabNavigator({
-  One: AddDeck,
-  Two: Deck
+  AddDeck: AddDeck,
+  DeckList: Deck
 });
 
 export default BottomTabNavigator;
