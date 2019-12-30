@@ -54,6 +54,16 @@ export function getDecks(deck) {
   });
 }
 
+export function addCardToDeck(name, card) {
+  return AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY)
+    .then(results => JSON.parse(results))
+    .then(results => {
+      results[name].questions.push(card);
+      AsyncStorage.setItem(FLASHCARDS_STORAGE_KEY, JSON.stringify(results));
+      return results;
+    });
+}
+
 export function saveDeckTitle(title) {
   return AsyncStorage.mergeItem(
     FLASHCARDS_STORAGE_KEY,
