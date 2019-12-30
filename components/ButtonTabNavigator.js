@@ -7,6 +7,7 @@ import { MaterialIcon, FontAwesomeIcon } from "./Icons";
 import AddDeck from "./AddDeck";
 import Deck from "./DeckList";
 import DeckView from "./DeckView";
+import AddCard from "./AddCard";
 
 const AddDecks = createStackNavigator(
   {
@@ -25,7 +26,8 @@ AddDeck.navigationOptions = {
 const Decks = createStackNavigator(
   {
     Decks: Deck,
-    DeckView: DeckView
+    DeckView: DeckView,
+    AddCard: AddCard
   }
   // config
 );

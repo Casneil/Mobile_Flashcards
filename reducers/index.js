@@ -1,8 +1,8 @@
-import { ADD_DECK, ADD_CARD_TO_DECK, RECIEVE_DECK } from "../actions/index";
+import { ADD_DECK, ADD_CARD_TO_DECK, RECIEVE_DECKS } from "../actions/index";
 
 function deck(state = {}, action) {
   switch (action.type) {
-    case RECIEVE_DECK:
+    case RECIEVE_DECKS:
       return {
         ...state,
         ...action.decks
