@@ -1,11 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { getData } from "../utils/api";
+import { connect } from "react-redux";
 
-const DeckView = ({ navigation }) => {
+const DeckView = ({ navigation, decks }) => {
   const deck = navigation.state.params.entryId;
   console.log(deck);
-  const decks = getData();
+  // const decks = getData();
 
   return (
     <View style={styles.container}>
@@ -23,4 +24,9 @@ const styles = StyleSheet.create({
   }
 });
 
-export default DeckView;
+function mapStateToProps(decks) {
+  return {
+    decks
+  };
+}
+export default connect(mapStateToProps)(DeckView);

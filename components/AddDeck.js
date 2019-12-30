@@ -5,8 +5,9 @@ import { addDeck } from "../actions";
 
 // pull in the ScreenName component from ScreenName.js
 import ScreenName from "../components/ScreenName.js";
+import { connect } from "react-redux";
 
-export default class ScreenOne extends React.Component {
+class ScreenOne extends React.Component {
   // we won't need to configure navigationOptions just yet
   static navigationOptions = {};
   state = {
@@ -18,19 +19,25 @@ export default class ScreenOne extends React.Component {
 
     saveDeckTitle(text);
     this.props.dispatch(addDeck(text));
-    this.props.navigation.navigate("DeckView", { ob });
+    this.props.navigation.navigate("DeckView", { entryId: text });
+    this.setState({ text: "" });
   };
 
   render() {
     return (
       <View style={styles.container}>
         <ScreenName name={"Add Deck" /* pass the name prop to ScreenName */} />
-        <Text>What's the name of the new deck?</Text>
+        <Text style={styles.title}>What's the name of the new deck?</Text>
         <TextInput
+          style={styles.input}
           value={this.state.text}
           onChangeText={text => this.setState({ text: text })}
         ></TextInput>
-        <Button title="submit" onPress={this.submitName}></Button>
+        <Button
+          style={styles.submitBtn}
+          title="submit"
+          onPress={this.submitName}
+        ></Button>
       </View>
     );
   }
@@ -39,11 +46,32 @@ export default class ScreenOne extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  input: {
+    width: 200,
+    height: 44,
+    padding: 8,
+    borderWidth: 1,
+    borderColor: "#757575",
+    margin: 50,
+    borderRadius: 8
+  },
+  title: {
+    fontSize: 30,
+    color: "#333"
+  },
+  submitBtn: {
+    borderWidth: 0.5,
+    borderColor: "#d6d7da",
+    padding: 10,
+    borderRadius: 7,
+    overflow: "hidden"
   }
 });
 
+export default connect()(ScreenOne);
 /*
 /////// Old Method
 import React, { useState, Component } from "react";

@@ -43,7 +43,7 @@ export const getData = () => {
   return initialData;
 };
 
-export const getDecks = deck => {
+export function getDecks(deck) {
   return AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY).then(results => {
     if (results === null) {
       AsyncStorage.setItem(FLASHCARDS_STORAGE_KEY, JSON.stringify(initialData));
@@ -52,10 +52,10 @@ export const getDecks = deck => {
       return JSON.parse(results);
     }
   });
-};
+}
 
-export const saveDeckTitle = title => {
-  return AsyncStorage.getItem(
+export function saveDeckTitle(title) {
+  return AsyncStorage.mergeItem(
     FLASHCARDS_STORAGE_KEY,
     JSON.stringify({
       [title]: {
@@ -64,4 +64,4 @@ export const saveDeckTitle = title => {
       }
     })
   );
-};
+}

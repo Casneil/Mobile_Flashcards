@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { getData } from "../utils/api";
+import { getDecks } from "../utils/api";
+import { recieveDecks } from "../actions";
 import ScreenName from "../components/ScreenName.js";
-import DeckView from "./DeckView";
+import { connect } from "react-redux";
+//import DeckView from "./DeckView";
 
-const Deck = props => {
-  const decks = getData();
+const Deck = ({ decks, recieveAllDecks, navigation }) => {
+  // const { decks } = props;
+  //const decks = getData();
+  // console.log(props);
+
+  useEffect(() => {
+    getDecks().then(decks => recieveAllDecks(decks));
+  }, []);
+
   return (
     <View style={styles.container}>
       {Object.keys(decks).map(deck => {
@@ -16,9 +26,7 @@ const Deck = props => {
             <Text>{title}</Text>
             <Text>{questions.length}</Text>
             <Button
-              onPress={() =>
-                props.navigation.navigate("DeckView", { entryId: deck })
-              }
+              onPress={() => navigation.navigate("DeckView", { entryId: deck })}
               title="view deck"
             ></Button>
           </View>
@@ -27,6 +35,7 @@ const Deck = props => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -35,7 +44,18 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Deck;
+function mapStateToProps(decks) {
+  return {
+    decks
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    recieveAllDecks: decks => dispatch(recieveDecks(decks))
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Deck);
 
 /*
  Old Method
