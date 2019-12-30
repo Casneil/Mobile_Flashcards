@@ -2,6 +2,11 @@ import { ADD_DECK, ADD_CARD_TO_DECK, RECIEVE_DECK } from "../actions/index";
 
 function deck(state = {}, action) {
   switch (action.type) {
+    case RECIEVE_DECK:
+      return {
+        ...state,
+        ...action.decks
+      };
     case ADD_DECK:
       const newDeck = {
         [action.deck]: {
@@ -24,11 +29,6 @@ function deck(state = {}, action) {
             { question, answer, correctAnswer }
           ]
         }
-      };
-    case RECIEVE_DECK:
-      return {
-        ...state,
-        ...action.decks
       };
     default:
       return state;

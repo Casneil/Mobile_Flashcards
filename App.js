@@ -1,4 +1,5 @@
 import React from "react";
+import { View, StyleSheet, Text } from "react-native";
 import { createStackNavigator } from "react-navigation-stack";
 //Pull in AppNavigator from the navigation folder
 import AppNavigator from "./components/AppNavigator";
@@ -12,11 +13,22 @@ import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { purple, white } from "./utils/colors";
 import DeckView from "./components/DeckView";
 
-export default function App() {
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import reducer from "./reducers";
+
+const App = () => {
+  const store = createStore(reducer);
   // return <AppNavigator />;
   // return <MainNavigator />;
-  return <AppNavigator />;
-}
+  return (
+    <Provider store={store}>
+      <View style={{ flex: 1 }}>
+        <AppNavigator />
+      </View>
+    </Provider>
+  );
+};
 
 // const MainNavigator = createStackNavigator({
 //   AppNavigator: {
@@ -55,3 +67,5 @@ export default function App() {
 //     marginBottom: 5
 //   }
 // });
+
+export default App;
