@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { getData } from "../utils/api";
 import ScreenName from "../components/ScreenName.js";
+import DeckView from "./DeckView";
 
 const Deck = props => {
   const decks = getData();

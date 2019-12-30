@@ -24,7 +24,8 @@ AddDeck.navigationOptions = {
 
 const Decks = createStackNavigator(
   {
-    Decks: Deck
+    Decks: Deck,
+    DeckView: DeckView
   }
   // config
 );
@@ -37,9 +38,9 @@ Deck.navigationOptions = {
 };
 
 const BottomTabNavigator = createBottomTabNavigator({
-  AddDecks,
   Decks,
-  DeckView
+  AddDecks
+  // DeckView
 });
 
 export default BottomTabNavigator;
