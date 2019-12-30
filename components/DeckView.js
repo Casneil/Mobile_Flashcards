@@ -2,8 +2,8 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { getData } from "../utils/api";
 
-const DeckView = props => {
-  const deck = props.navigation.state.params.entryId;
+const DeckView = ({ navigation }) => {
+  const deck = navigation.state.params.entryId;
   console.log(deck);
   const decks = getData();
 
