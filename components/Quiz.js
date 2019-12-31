@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView
 } from "react-native";
-import { NavigationActions } from "react-native";
+import { NavigationActions } from "react-navigation";
 import { orange, white, offWhite, red, green, blue } from "../utils/colors";
 import { connect } from "react-redux";
 import ActionButton from "./ActionButton";
@@ -34,7 +34,7 @@ class Quiz extends React.Component {
       questionNumber
     ].correctAnswer.toLowerCase();
 
-    if (answer === correct) {
+    if (answer.trim() === correct) {
       this.setState({ correct: this.state.correct + 1 });
     } else {
       this.setState({ incorrect: this.state.inCorrect + 1 });
@@ -44,10 +44,19 @@ class Quiz extends React.Component {
       questionNumber: this.state.questionNumber + 1,
       showQuestion: false
     });
+  };
 
-    // increment question number
+  replayQuiz = () => {
+    this.setState({
+      questionNumber: 0,
+      showQuestion: false,
+      correct: 0,
+      incorrect: 0
+    });
+  };
 
-    // show animation
+  goBack = () => {
+    this.props.navigation.dispatch(NavigationActions.back({ key: null }));
   };
 
   render() {
@@ -69,8 +78,20 @@ class Quiz extends React.Component {
             ) : (
               <Text style={{ fontSize: 88 }}>😱😰</Text>
             )}
-            <ActionButton style={styles} text={"Start over"} color={red} />
-            <ActionButton style={styles} text={"Go Back"} color={green} />
+            <View>
+              <ActionButton
+                onPress={this.replayQuiz}
+                style={styles}
+                text={"Start over"}
+                color={red}
+              />
+              <ActionButton
+                onPress={this.goBack}
+                style={styles}
+                text={"Go Back"}
+                color={green}
+              />
+            </View>
           </View>
         </View>
       );
@@ -104,18 +125,20 @@ class Quiz extends React.Component {
               onPress={this.showAnswer}
             ></Info>
           )}
-          <ActionButton
-            onPress={() => this.submitAnswer("true")}
-            color={green}
-            style={styles}
-            text={"Correct"}
-          />
-          <ActionButton
-            onPress={() => this.submitAnswer("false")}
-            color={green}
-            style={styles}
-            text={"Incorrect"}
-          />
+          <View>
+            <ActionButton
+              onPress={() => this.submitAnswer("true")}
+              color={green}
+              style={styles}
+              text={"Correct"}
+            />
+            <ActionButton
+              onPress={() => this.submitAnswer("false")}
+              color={green}
+              style={styles}
+              text={"Incorrect"}
+            />
+          </View>
         </View>
       </View>
     );

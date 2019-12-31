@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { StyleSheet, Text, View, Button, Platform } from "react-native";
 import { getData } from "../utils/api";
+import { getCardsLength } from "../utils/helpers";
 import { offWhite, white } from "../utils/colors";
 import { getDecks } from "../utils/api";
 import { recieveDecks } from "../actions";
@@ -23,9 +24,11 @@ const Deck = ({ decks, recieveAllDecks, navigation }) => {
         const { title, questions } = decks[deck];
         return Platform.OS === "android" ? (
           <View key={deck} style={styles.cardAndroid}>
-            <ScreenName name={"Screen Two"} />
+            {/* <ScreenName name={"Screen Two"} /> */}
             <Text style={styles.cardText}>{title}</Text>
-            <Text style={styles.cardText}>{questions.length}</Text>
+            <Text style={styles.cardText}>
+              {questions ? getCardsLength(questions) : null}
+            </Text>
             <Button
               style={styles.cardBtn}
               onPress={() => navigation.navigate("DeckView", { entryId: deck })}
@@ -34,9 +37,11 @@ const Deck = ({ decks, recieveAllDecks, navigation }) => {
           </View>
         ) : (
           <View key={deck} style={styles.cardIos}>
-            <ScreenName name={"Screen Two"} />
+            {/* <ScreenName name={"Screen Two"} /> */}
             <Text style={styles.cardText}>{title}</Text>
-            <Text style={styles.cardText}>{questions.length}</Text>
+            <Text style={styles.cardText}>
+              {questions ? getCardsLength(questions) : null}
+            </Text>
             <Button
               style={styles.cardBtn}
               onPress={() => navigation.navigate("DeckView", { entryId: deck })}
