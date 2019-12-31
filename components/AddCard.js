@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+import { Alert } from "react-native";
 import { NavigationActions } from "react-navigation";
 import {
   View,
@@ -15,6 +17,8 @@ import { orange, white } from "../utils/colors";
 import { addCardToDeck } from "../utils/api";
 
 import { addCard } from "../actions";
+
+import SubmitButton from "./SubmitButton";
 
 class AddCard extends React.Component {
   state = {
@@ -66,13 +70,16 @@ class AddCard extends React.Component {
             // }
             value={this.state.correctAnswer}
           ></TextInput>
-
-          <TouchableOpacity
+          <SubmitButton
+            onPress={() => this.submitCard(deckName)}
+            style={styles.submitBtn}
+          />
+          {/* <TouchableOpacity
             style={styles.submitBtn}
             onPress={() => this.submitCard(deckName)}
           >
             <Text style={styles.submitBtnText}>Submit</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </KeyboardAvoidingView>
     );

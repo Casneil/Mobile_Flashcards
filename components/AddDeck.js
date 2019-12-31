@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text, TextInput, Button } from "react-native";
 import { saveDeckTitle } from "../utils/api";
 import { addDeck } from "../actions";
+import SubmitButton from "./SubmitButton";
 
 // pull in the ScreenName component from ScreenName.js
 import ScreenName from "../components/ScreenName.js";
@@ -33,11 +34,12 @@ class ScreenOne extends React.Component {
           value={this.state.text}
           onChangeText={text => this.setState({ text: text })}
         ></TextInput>
-        <Button
+        <SubmitButton style={styles.submitBtn} onPress={this.submitName} />
+        {/* <Button
           style={styles.submitBtn}
           title="submit"
           onPress={this.submitName}
-        ></Button>
+        ></Button> */}
       </View>
     );
   }
