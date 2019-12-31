@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, TextInput, Button } from "react-native";
 import { saveDeckTitle } from "../utils/api";
 import { addDeck } from "../actions";
 import SubmitButton from "./SubmitButton";
+import { orange } from "../utils/colors";
 
 // pull in the ScreenName component from ScreenName.js
 import ScreenName from "../components/ScreenName.js";
@@ -68,6 +69,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: "#d6d7da",
     padding: 10,
+    backgroundColor: orange,
     borderRadius: 7,
     overflow: "hidden"
   }
