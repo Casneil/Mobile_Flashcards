@@ -10,8 +10,8 @@ const initialData = {
     questions: [
       {
         question: "Whats the difference between React and React Native",
-        answer: "React doesnt uses View and Text Components",
-        correctAnswer: "false"
+        answer: "React doesn't use View and Text Components",
+        correctAnswer: "true"
       },
 
       {
@@ -27,8 +27,8 @@ const initialData = {
     questions: [
       {
         question: "When was the second world war",
-        answer: "1939",
-        correctAnswer: "true"
+        answer: "1940",
+        correctAnswer: "false"
       },
       {
         question: "Who was the first person to translate the Bible",

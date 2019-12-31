@@ -15,7 +15,39 @@ import Info from "./Info";
 
 class Quiz extends React.Component {
   state = {
-    questionNumber: 0
+    questionNumber: 0,
+    showQuestion: false,
+    correct: 0,
+    incorrect: 0
+  };
+
+  showAnswer = () =>
+    !this.state.showQuestion
+      ? this.setState({ showQuestion: true })
+      : this.setState({ showQuestion: false });
+
+  submitAnswer = answer => {
+    const { questionNumber } = this.state;
+    const deck = this.props.navigation.state.params.entryId;
+    const decks = this.props.decks;
+    const correct = decks[deck].questions[
+      questionNumber
+    ].correctAnswer.toLowerCase();
+
+    if (answer === correct) {
+      this.setState({ correct: this.state.correct + 1 });
+    } else {
+      this.setState({ incorrect: this.state.inCorrect + 1 });
+    }
+
+    this.setState({
+      questionNumber: this.state.questionNumber + 1,
+      showQuestion: false
+    });
+
+    // increment question number
+
+    // show animation
   };
 
   render() {
@@ -24,18 +56,66 @@ class Quiz extends React.Component {
     const deck = this.props.navigation.state.params.entryId;
     const number = this.state.questionNumber + 1;
 
+    if (questionNumber === decks[deck].questions.length) {
+      return (
+        <View style={styles.container}>
+          <View style={styles.card}>
+            <Text style={styles.mainText}>
+              You got {this.state.correct} out of {decks[deck].questions.length}
+              {""} correct!
+            </Text>
+            {this.state.correct > this.state.incorrect ? (
+              <Text style={{ fontSize: 88 }}>🎇🎆</Text>
+            ) : (
+              <Text style={{ fontSize: 88 }}>😱😰</Text>
+            )}
+            <ActionButton style={styles} text={"Start over"} color={red} />
+            <ActionButton style={styles} text={"Go Back"} color={green} />
+          </View>
+        </View>
+      );
+    }
+
     return (
       <View style={styles.container}>
         <View style={styles.card}>
           <Text style={styles.questions}>
             {number} / {decks[deck].questions.length}
           </Text>
-          <Text style={styles.mainText}>
-            {decks[deck].questions[questionNumber].question}
-          </Text>
-          <Info style={styles.answer} text={"Show Answer"}></Info>
-          <ActionButton color={green} style={styles} text={"Correct"} />
-          <ActionButton color={green} style={styles} text={"Incorrect"} />
+          {!this.state.showQuestion ? (
+            <Text style={styles.mainText}>
+              {decks[deck].questions[questionNumber].question}
+            </Text>
+          ) : (
+            <Text style={styles.mainText}>
+              {decks[deck].questions[questionNumber].answer}
+            </Text>
+          )}
+          {!this.state.showQuestion ? (
+            <Info
+              style={styles.answer}
+              text={"Show Question"}
+              onPress={this.showAnswer}
+            ></Info>
+          ) : (
+            <Info
+              style={styles.answer}
+              text={"Show Answer"}
+              onPress={this.showAnswer}
+            ></Info>
+          )}
+          <ActionButton
+            onPress={() => this.submitAnswer("true")}
+            color={green}
+            style={styles}
+            text={"Correct"}
+          />
+          <ActionButton
+            onPress={() => this.submitAnswer("false")}
+            color={green}
+            style={styles}
+            text={"Incorrect"}
+          />
         </View>
       </View>
     );
