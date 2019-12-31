@@ -8,6 +8,7 @@ import AddDeck from "./AddDeck";
 import Deck from "./DeckList";
 import DeckView from "./DeckView";
 import AddCard from "./AddCard";
+import Quiz from "./Quiz";
 
 const AddDecks = createStackNavigator(
   {
@@ -27,7 +28,8 @@ const Decks = createStackNavigator(
   {
     Decks: Deck,
     DeckView: DeckView,
-    AddCard: AddCard
+    AddCard: AddCard,
+    Quiz: Quiz
   }
   // config
 );
