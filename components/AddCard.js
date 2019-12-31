@@ -32,19 +32,18 @@ class AddCard extends React.Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const deckName = this.props.navigation.state.params.entryId;
 
     return (
-      <KeyboardAvoidingView behaviour="padding" style={styles.container}>
-        <ScreenName name="Add A Card" />
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        {/* <ScreenName name="Add A Card" /> */}
         <View style={styles.container}>
           <Text style={styles.title}>Enter Question</Text>
           <TextInput
             style={styles.input}
-            onChangeText={question => {
-              return this.setState({ question: question });
-            }}
+            onChangeText={question => this.setState({ question: question })}
+            // onChangeText={question => this.setState({ question: question })}
             value={this.state.question}
           ></TextInput>
 
@@ -52,6 +51,7 @@ class AddCard extends React.Component {
           <TextInput
             style={styles.input}
             onChangeText={answer => this.setState({ answer: answer })}
+            // onChangeText={answer => this.setState({ answer: answer })}
             value={this.state.answer}
           ></TextInput>
 
@@ -61,6 +61,9 @@ class AddCard extends React.Component {
             onChangeText={correctAnswer =>
               this.setState({ correctAnswer: correctAnswer })
             }
+            // onChangeText={correctAnswer =>
+            //   this.setState({ correctAnswer: correctAnswer })
+            // }
             value={this.state.correctAnswer}
           ></TextInput>
 

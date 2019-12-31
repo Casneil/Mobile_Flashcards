@@ -1,6 +1,6 @@
 import { ADD_DECK, ADD_CARD_TO_DECK, RECIEVE_DECKS } from "../actions/index";
 
-function deck(state = {}, action) {
+const deck = (state = {}, action) => {
   switch (action.type) {
     case RECIEVE_DECKS:
       return {
@@ -33,6 +33,6 @@ function deck(state = {}, action) {
     default:
       return state;
   }
-}
+};
 
 export default deck;
