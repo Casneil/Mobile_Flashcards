@@ -4,3 +4,4 @@ export const orange = "#f26f28";
 export const blue = "#1500AF";
 export const green = "#62Ab7C";
 export const red = "#F22727";
+export const offWhite = "#9B9B9B";
