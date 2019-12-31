@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Platform,
-  TouchableOpacity,
-  KeyboardAvoidingView
-} from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { NavigationActions } from "react-navigation";
 import { orange, white, offWhite, red, green, blue } from "../utils/colors";
 import { connect } from "react-redux";
