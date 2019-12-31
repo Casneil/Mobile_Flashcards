@@ -1,5 +1,12 @@
 import React, { useEffect } from "react";
-import { StyleSheet, Text, View, Button, Platform } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  Platform,
+  ScrollView
+} from "react-native";
 import { getData } from "../utils/api";
 import { getCardsLength } from "../utils/helpers";
 import { offWhite, white } from "../utils/colors";
@@ -7,13 +14,8 @@ import { getDecks } from "../utils/api";
 import { recieveDecks } from "../actions";
 import ScreenName from "../components/ScreenName.js";
 import { connect } from "react-redux";
-//import DeckView from "./DeckView";
 
 const Deck = ({ decks, recieveAllDecks, navigation }) => {
-  // const { decks } = props;
-  //const decks = getData();
-  // console.log(props);
-
   useEffect(() => {
     getDecks().then(decks => recieveAllDecks(decks));
   }, []);

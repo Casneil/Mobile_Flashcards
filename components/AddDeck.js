@@ -37,7 +37,11 @@ class ScreenOne extends React.Component {
           value={this.state.text}
           onChangeText={text => this.setState({ text: text })}
         ></TextInput>
-        <SubmitButton style={styles.submitBtn} onPress={this.submitName} />
+        <SubmitButton
+          style={styles.submitBtn}
+          onPress={this.submitName}
+          name={"Create Deck"}
+        />
         {/* <Button
           style={styles.submitBtn}
           title="submit"

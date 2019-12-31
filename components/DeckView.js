@@ -1,21 +1,23 @@
 import React from "react";
 import { View, Text, StyleSheet, Platform } from "react-native";
 import { getData } from "../utils/api";
+import { getCardsLength } from "../utils/helpers";
 import { connect } from "react-redux";
 import ActionButton from "./ActionButton";
 import { purple, white, red, offWhite, orange } from "../utils/colors";
 
 const DeckView = ({ navigation, decks }) => {
   const deck = navigation.state.params.entryId;
-  console.log(deck);
-  // const decks = getData();
+  const questions = decks[deck].questions;
 
   return (
     <View style={styles.container}>
       {Platform.OS === "android" ? (
         <View style={styles.cardAndroid}>
           <Text style={styles.mainText}>{decks[deck].title}</Text>
-          <Text style={styles.subText}>{decks[deck].questions.length}</Text>
+          <Text style={styles.subText}>
+            {questions ? getCardsLength(questions) : null}
+          </Text>
           <ActionButton
             style={styles}
             text={"Add a Card"}
@@ -33,7 +35,7 @@ const DeckView = ({ navigation, decks }) => {
       ) : (
         <View style={styles.cardIos}>
           <Text>{decks[deck].title}</Text>
-          <Text>{decks[deck].questions.length}</Text>
+          <Text>{questions ? getCardsLength(questions) : null}</Text>
           <ActionButton
             style={styles}
             text={"Add a Card"}

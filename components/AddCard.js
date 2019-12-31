@@ -75,6 +75,7 @@ class AddCard extends React.Component {
           <SubmitButton
             onPress={() => this.submitCard(deckName)}
             style={styles.submitBtn}
+            name={"Add Card"}
           />
           {/* <TouchableOpacity
             style={styles.submitBtn}
