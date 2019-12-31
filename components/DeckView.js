@@ -17,14 +17,14 @@ const DeckView = ({ navigation, decks }) => {
           <Text style={styles.mainText}>{decks[deck].title}</Text>
           <Text style={styles.subText}>{decks[deck].questions.length}</Text>
           <ActionButton
-            styles={styles}
+            style={styles}
             text={"Add a Card"}
             onPress={() => navigation.navigate("AddCard", { entryId: deck })}
             color={purple}
           />
 
           <ActionButton
-            styles={styles}
+            style={styles}
             text={"Start Quiz"}
             onPress={() => navigation.navigate("Quiz", { entryId: deck })}
             color={red}
@@ -35,14 +35,14 @@ const DeckView = ({ navigation, decks }) => {
           <Text>{decks[deck].title}</Text>
           <Text>{decks[deck].questions.length}</Text>
           <ActionButton
-            styles={styles}
+            style={styles}
             text={"Add a Card"}
             onPress={() => navigation.navigate("AddCard", { entryId: deck })}
             color={purple}
           />
 
           <ActionButton
-            styles={styles}
+            style={styles}
             text={"Start Quiz"}
             onPress={() => navigation.navigate("Quiz", { entryId: deck })}
             color={red}

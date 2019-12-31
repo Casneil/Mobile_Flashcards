@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
-const ActionButton = ({ onPress, styles, text, color }) => {
+const ActionButton = ({ onPress, style, text, color }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[styles.androidBtn, { backgroundColor: color }]}
+      style={[style.androidBtn, { backgroundColor: color }]}
     >
-      <Text style={styles.submitBtnText}>{text}</Text>
+      <Text style={style.submitBtnText}>{text}</Text>
     </TouchableOpacity>
   );
 };
