@@ -115,13 +115,13 @@ class Quiz extends React.Component {
           {!this.state.showQuestion ? (
             <Info
               style={styles.answer}
-              text={"Show Question"}
+              text={"Show Answer"}
               onPress={this.showAnswer}
             ></Info>
           ) : (
             <Info
               style={styles.answer}
-              text={"Show Answer"}
+              text={"Show Question"}
               onPress={this.showAnswer}
             ></Info>
           )}

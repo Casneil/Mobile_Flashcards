@@ -21,7 +21,7 @@ const Deck = ({ decks, recieveAllDecks, navigation }) => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {Object.keys(decks).map(deck => {
         const { title, questions } = decks[deck];
         return Platform.OS === "android" ? (
@@ -52,7 +52,7 @@ const Deck = ({ decks, recieveAllDecks, navigation }) => {
           </View>
         );
       })}
-    </View>
+    </ScrollView>
   );
 };
 
