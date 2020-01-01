@@ -35,42 +35,4 @@ const App = () => {
   );
 };
 
-// const MainNavigator = createStackNavigator({
-//   AppNavigator: {
-//     screen: AppNavigator,
-//     navigationOptions: ({ navigation }) => ({
-//       title: `${navigation.state.params.name}'s Deck`
-//     })
-//   },
-//   DeckView: {
-//     screen: DeckView
-//     // navigationOptions: {
-//     //   title: "Deck View",
-//     //   headerTintColor: white,
-//     //   headerStyle: {
-//     //     backgroundColor: purple
-//     //   }
-//     // }
-//   }
-// });
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems: "center",
-//     backgroundColor: "white"
-//   },
-//   welcome: {
-//     fontSize: 20,
-//     textAlign: "center",
-//     margin: 10
-//   },
-//   instructions: {
-//     textAlign: "center",
-//     color: "pink",
-//     marginBottom: 5
-//   }
-// });
-
 export default App;

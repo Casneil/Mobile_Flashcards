@@ -4,7 +4,7 @@ import { AsyncStorage } from "react-native";
 import { Notifications } from "expo";
 import { Permissions } from "expo-permissions";
 
-const NOTIFICATION_KEY = "flashcards: notofications";
+const NOTIFICATION_KEY = "flashcards: notifications";
 
 export const getCardsLength = questions => {
   if (questions.length === 0) {
