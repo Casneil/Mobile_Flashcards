@@ -18,8 +18,6 @@ const App = () => {
     setLocalNotification();
   }, []);
 
-  // return <AppNavigator />;
-  // return <MainNavigator />;
   return (
     <Provider store={store}>
       <View style={{ flex: 1 }}>
